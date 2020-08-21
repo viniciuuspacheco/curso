@@ -1,0 +1,60 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    height: 40px;
+    widows: 40px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    filter: opacity(0.5);
+    -webkit-filter: opacity(0.5);
+}
+
+.logo:hover {
+    filter: opacity(1);
+    -webkit-filter: opacity(1);
+}
+.card {
+    -webkit-animation: appear 4s ease 0s 1 normal;
+    -moz-animation: appear 4s ease 0s 1 normal;
+    -ms-animation: appear 4s ease 0s 1 normal;
+    animation: appear 4s ease 0s 1 normal;
+}
+
+@-webkit-keyframes appear {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.nav-link {
+    background-color: whitesmoke;
+    color: dimgray;
+}
+.nav-link:hover {
+    color: black;
+}
