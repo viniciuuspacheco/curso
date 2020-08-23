@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service'
+import { ApiService } from 'src/app/services/api.service';
+import { AlertsService } from 'src/app/tools/alerts/alerts.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService) {
   }
 
   ngOnInit(): void {
@@ -31,15 +32,18 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    this.alert.adicionar('Usuário não encontrado!');
     console.log(this.api.request(this.logarForm.value));
     // this.router.navigate(['main']);
   }
 
   cadastrar() {
+    this.alert.adicionar('Cadastro realizado com sucesso!');
     console.log(this.api.request(this.cadastrarForm.value));
   }
 
   recuperar() {
+    this.alert.adicionar('Um e-mail foi enviado para você!');
     console.log(this.api.request(this.recuperarForm.value));
   }
 

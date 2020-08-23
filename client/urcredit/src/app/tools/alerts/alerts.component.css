@@ -1,0 +1,64 @@
+.notifications {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.notifications {
+    overflow-y: scroll;
+}
+.notifications::-webkit-scrollbar {
+    width: 0;
+}
+
+.notifications::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.notifications::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.notifications::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+.alert {
+    width: 300px;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+    -webkit-animation: appear 1s ease 0s 1 normal;
+    -moz-animation: appear 1s ease 0s 1 normal;
+    -ms-animation: appear 1s ease 0s 1 normal;
+    animation: appear 1s ease 0s 1 normal;
+}
+@media (max-width: 575.98px) {
+    .alert {
+        width: calc(100vw);
+    }
+}
+
+@-webkit-keyframes appear {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
