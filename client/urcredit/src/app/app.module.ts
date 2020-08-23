@@ -12,7 +12,7 @@ import { Error404Component } from './components/error404/error404.component';
     AppComponent,
     LoginComponent,
     MainComponent,
-    Error404Component
+    Error404Component,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) {
   }
 
   ngOnInit(): void {
@@ -20,25 +21,26 @@ export class LoginComponent implements OnInit {
       logarSenha: ['', Validators.required]
     });
     this.cadastrarForm = this.formBuilder.group({
-      cadastrarEmail: ['', Validators.required],
+      cadastrarEmail: ['', [Validators.required, Validators.email]],
       cadastrarUsuario: ['', Validators.required],
       cadastrarSenha: ['', Validators.required]
     });
     this.recuperarForm = this.formBuilder.group({
-      recuperarEmail: ['', Validators.required]
+      recuperarEmail: ['', [Validators.required, Validators.email]]
     });
   }
 
   logar() {
-    this.router.navigate(['main']);
+    console.log(this.api.request(this.logarForm.value));
+    // this.router.navigate(['main']);
   }
 
   cadastrar() {
-    console.log(this.cadastrarForm);
+    console.log(this.api.request(this.cadastrarForm.value));
   }
 
   recuperar() {
-    console.log(this.recuperarForm);
+    console.log(this.api.request(this.recuperarForm.value));
   }
 
   validar(formulario) {

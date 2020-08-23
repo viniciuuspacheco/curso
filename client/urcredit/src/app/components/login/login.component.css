@@ -6,21 +6,6 @@
     display: flex;
 }
 
-.logo {
-    height: 40px;
-    widows: 40px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    filter: opacity(0.5);
-    -webkit-filter: opacity(0.5);
-}
-
-.logo:hover {
-    filter: opacity(1);
-    -webkit-filter: opacity(1);
-}
 .card {
     -webkit-animation: appear 4s ease 0s 1 normal;
     -moz-animation: appear 4s ease 0s 1 normal;
