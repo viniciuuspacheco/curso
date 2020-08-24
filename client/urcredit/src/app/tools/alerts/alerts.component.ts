@@ -6,12 +6,10 @@ import { AlertsService } from "src/app/tools/alerts/alerts.service";
   styleUrls: ['./alerts.component.css']
 })
 export class AlertsComponent implements OnInit {
-  alertas;
-  constructor(private alerts: AlertsService) {
+  constructor(public alerts: AlertsService) {
   }
 
   ngOnInit() {
-    this.alertas = this.alerts.notification;
   }
   fechar(id) {
     this.alerts.fechar(id);
