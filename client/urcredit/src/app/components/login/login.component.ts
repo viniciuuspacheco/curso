@@ -33,23 +33,20 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    this.alert.adicionar('Usuário não encontrado!');
-    this.load.carregando(true);
-    setTimeout(() => {
-      this.load.carregando(false);
-    }, 1000);
-    console.log(this.api.request(this.logarForm.value));
+     this.alert.adicionar('Usuário não encontrado!');
+    // this.load.carregando(true);
+    //    console.log(this.api.request(this.logarForm.value));
     // this.router.navigate(['main']);
   }
 
   cadastrar() {
-    this.alert.adicionar('Cadastro realizado com sucesso!');
-    console.log(this.api.request(this.cadastrarForm.value));
+    // this.alert.adicionar('Cadastro realizado com sucesso!');
+    // console.log(this.api.request(this.cadastrarForm.value));
   }
 
   recuperar() {
-    this.alert.adicionar('Um e-mail foi enviado para você!');
-    console.log(this.api.request(this.recuperarForm.value));
+    // this.alert.adicionar('Um e-mail foi enviado para você!');
+    // console.log(this.api.request(this.recuperarForm.value));
   }
 
   validar(formulario) {

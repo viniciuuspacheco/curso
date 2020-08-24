@@ -1,9 +1,9 @@
 .notifications {
     position: absolute;
     top: 0;
-    right: 0;
     max-height: 100vh;
     overflow-y: scroll;
+    border-radius: 10px;
 }
 
 .notifications {
@@ -25,6 +25,7 @@
     background: transparent;
 }
 .alert {
+    margin: 10px;
     width: 300px;
     cursor: pointer;
     background-color: whitesmoke;
@@ -36,7 +37,7 @@
 }
 @media (max-width: 575.98px) {
     .alert {
-        width: calc(100vw);
+        width: calc(100vw - 20px);
     }
 }
 

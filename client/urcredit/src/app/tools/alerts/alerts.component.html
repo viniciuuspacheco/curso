@@ -1,5 +1,7 @@
-<div class="notifications">
-    <div class="alert shadow text-center" *ngFor="let alert of alerts.notification" (click)="fechar(alert)">
-        <strong>{{alert}}</strong>
+<div class="row justify-content-center">
+    <div class="notifications">
+        <div class="alert shadow text-center" *ngFor="let alert of alerts.notification" (click)="fechar(alert)">
+            <strong>{{alert}}</strong>
+        </div>
     </div>
 </div>
