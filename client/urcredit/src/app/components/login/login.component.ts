@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AlertsService } from 'src/app/tools/alerts/alerts.service';
+import { LoadService } from 'src/app/tools/load/load.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService, private load: LoadService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   logar() {
     this.alert.adicionar('Usuário não encontrado!');
+    this.load.carregando(true);
     console.log(this.api.request(this.logarForm.value));
     // this.router.navigate(['main']);
   }

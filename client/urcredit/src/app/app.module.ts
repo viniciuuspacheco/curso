@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { Error404Component } from './components/error404/error404.component';
 import { AlertsComponent } from './tools/alerts/alerts.component';
+import { LoadComponent } from './tools/load/load.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AlertsComponent } from './tools/alerts/alerts.component';
     MainComponent,
     Error404Component,
     AlertsComponent,
+    LoadComponent,
   ],
   imports: [
     BrowserModule,
