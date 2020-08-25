@@ -25,6 +25,7 @@
     background: transparent;
 }
 .alert {
+    border: 1px solid black;
     margin: 10px;
     width: 300px;
     cursor: pointer;
