@@ -1,0 +1,103 @@
+.main {
+    height: 100vh;
+    widows: 100vw;
+    background-color: black;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100px;
+    background-color: black;
+}
+
+.logo {
+    cursor: pointer;
+    text-align: center !important;
+    font-size: 20px;
+    padding: 5px 0px;
+    color: rgba(245, 245, 245, 0.5);
+    font-family: "Russo One", sans-serif;
+}
+.logo:hover {
+    color: white;
+}
+
+.menu-nav {
+    height: calc(100vh - 39.6px);
+    overflow-y: auto;
+}
+
+.menu-nav::-webkit-scrollbar {
+    width: 10px;
+}
+
+.menu-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.menu-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.menu-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+    text-align: center !important;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(245, 245, 245, 0.5);
+    padding: 15px 0;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link-icon {
+    font-size: 25px;
+}
+
+.nav-link-ativo {
+    color: white;
+}
+
+.esconder {
+    margin-left: -100px;
+}
+
+.top-menu {
+    background-color: black;
+    padding: 5px 15px;
+}
+
+.top-menu-direita {
+    float: right;
+}
+
+.icones {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(245, 245, 245, 0.5);
+    font-size: 30px;
+}
+
+.icones:hover {
+    color: whitesmoke;
+}
+
+.content {
+    height: calc(100vh - 41.2px);
+    overflow-y: auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.margin {
+    margin-left: 100px;
+}

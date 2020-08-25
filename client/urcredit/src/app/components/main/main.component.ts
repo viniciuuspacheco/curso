@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  mostrar = true;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  toggle() {
+    this.mostrar = !this.mostrar;
+  }
 }

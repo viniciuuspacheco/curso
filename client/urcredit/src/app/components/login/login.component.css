@@ -7,6 +7,9 @@
 }
 
 .card {
+    border-radius: 15px;
+    max-height: 100vh;
+    overflow-y: auto;
     -webkit-animation: appear 4s ease 0s 1 normal;
     -moz-animation: appear 4s ease 0s 1 normal;
     -ms-animation: appear 4s ease 0s 1 normal;
