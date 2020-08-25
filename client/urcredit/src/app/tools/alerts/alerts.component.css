@@ -1,14 +1,18 @@
 .notifications {
     position: absolute;
     top: 0;
+    right: 0;
     max-height: 100vh;
     overflow-y: scroll;
     border-radius: 10px;
+    padding-top: 41.2px;
+}
+@media (max-width: 575.98px) {
+    .notifications {
+        padding-top: 0;
+    }
 }
 
-.notifications {
-    overflow-y: scroll;
-}
 .notifications::-webkit-scrollbar {
     width: 0;
 }
@@ -25,11 +29,10 @@
     background: transparent;
 }
 .alert {
-    border: 1px solid black;
     margin: 10px;
     width: 300px;
     cursor: pointer;
-    background-color: whitesmoke;
+    background-color: white;
     color: black;
     -webkit-animation: appear 1s ease 0s 1 normal;
     -moz-animation: appear 1s ease 0s 1 normal;
