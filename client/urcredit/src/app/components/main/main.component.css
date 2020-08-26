@@ -1,7 +1,9 @@
 .main {
     height: 100vh;
-    widows: 100vw;
+    width: 100vw;
     background-color: black;
+    overflow: hidden;
+    position: fixed;
 }
 
 .side-menu {

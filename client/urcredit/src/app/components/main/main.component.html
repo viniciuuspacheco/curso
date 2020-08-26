@@ -1,21 +1,22 @@
 <div class="main">
-    <div class="side-menu" [ngClass]="{'esconder': !mostrar}">
+    <div class="side-menu" [ngClass]="{'esconder': !mostrar}" [routerLink]="['logo']">
         <div class="logo">
             UrCredit
         </div>
         <nav class="menu-nav">
-            <a class="nav-link" [routerLink]="['daw']" routerLinkActive="nav-link-ativo">
+            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
                 <i class="fas fa-hand-holding-usd nav-link-icon"></i><br>
                 PRIMEIRO
             </a>
-            <a class="nav-link" [routerLink]="['dwa']" routerLinkActive="nav-link-ativo">
+            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
                 <i class="fas fa-percentage nav-link-icon"></i><br>
                 SEGUNDO
             </a>
-            <a class="nav-link" [routerLink]="['awd']" routerLinkActive="nav-link-ativo">
+            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
                 <i class="fas fa-credit-card nav-link-icon"></i><br>
                 TERCEIRO
             </a>
+
         </nav>
     </div>
     <div class="top-menu" [ngClass]="{'margin': mostrar}">
