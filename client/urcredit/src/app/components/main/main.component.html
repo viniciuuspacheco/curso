@@ -1,20 +1,20 @@
 <div class="main">
-    <div class="side-menu" [ngClass]="{'esconder': !mostrar}" [routerLink]="['logo']">
+    <div class="side-menu" [ngClass]="{'esconder': !mostrar}">
         <div class="logo">
             UrCredit
         </div>
         <nav class="menu-nav">
-            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
+            <a class="nav-link" [routerLink]="['dividas']" routerLinkActive="nav-link-ativo">
                 <i class="fas fa-hand-holding-usd nav-link-icon"></i><br>
-                PRIMEIRO
+                DÍVIDAS
             </a>
-            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
-                <i class="fas fa-percentage nav-link-icon"></i><br>
-                SEGUNDO
+            <a class="nav-link" [routerLink]="['buscar']" routerLinkActive="nav-link-ativo">
+                <i class="fas fa-search-dollar nav-link-icon"></i><br>
+                BUSCAR
             </a>
-            <a class="nav-link" [routerLink]="['1']" routerLinkActive="nav-link-ativo">
-                <i class="fas fa-credit-card nav-link-icon"></i><br>
-                TERCEIRO
+            <a class="nav-link" [routerLink]="['cadastrar']" routerLinkActive="nav-link-ativo">
+                <i class="fas fa-user-plus nav-link-icon"></i><br>
+                CADASTRAR
             </a>
 
         </nav>

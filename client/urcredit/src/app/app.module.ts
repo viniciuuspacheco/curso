@@ -8,6 +8,9 @@ import { MainComponent } from './components/main/main.component';
 import { Error404Component } from './components/error404/error404.component';
 import { AlertsComponent } from './tools/alerts/alerts.component';
 import { LoadComponent } from './tools/load/load.component';
+import { DividasComponent } from './components/dividas/dividas.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
+import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { LoadComponent } from './tools/load/load.component';
     Error404Component,
     AlertsComponent,
     LoadComponent,
+    DividasComponent,
+    BuscarComponent,
+    CadastrarComponent,
   ],
   imports: [
     BrowserModule,

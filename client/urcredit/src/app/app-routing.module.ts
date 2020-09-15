@@ -4,13 +4,21 @@ import { MainComponent } from "src/app/components/main/main.component";
 import { LoginComponent } from "src/app/components/login/login.component";
 import { Error404Component } from "src/app/components/error404/error404.component";
 import { AuthGuard } from './guards/auth.guard';
-
+import { DividasComponent } from './components/dividas/dividas.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
+import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'main', component: MainComponent,
-    canLoad: [AuthGuard]
+    canLoad: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'dividas', pathMatch: 'full' },
+      { path: 'dividas', component: DividasComponent },
+      { path: 'buscar', component: BuscarComponent },
+      { path: 'cadastrar', component: CadastrarComponent }
+    ],
   },
   { path: '**', component: Error404Component }
 ];
