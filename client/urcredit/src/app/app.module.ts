@@ -11,6 +11,7 @@ import { LoadComponent } from './tools/load/load.component';
 import { DividasComponent } from './components/dividas/dividas.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
+import { AuthGuard } from './guards/auth.guard'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

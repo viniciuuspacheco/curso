@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   mostrar = true;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
   toggle() {
     this.mostrar = !this.mostrar;
+  }
+  deslogar() {
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

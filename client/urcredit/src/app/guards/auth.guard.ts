@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanActivate {
   constructor(private router: Router) { }
-
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-
+  canActivate() {
     if (sessionStorage.getItem('token')) {
       return true;
     }
@@ -19,4 +14,5 @@ export class AuthGuard implements CanLoad {
     this.router.navigate(['/login']);
     return false;
   }
+
 }

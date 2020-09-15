@@ -28,7 +28,7 @@ export class ApiService {
     }).then((response) => {
       this.load.carregando(false);
       if (response.status === 200) {
-        this.router.navigate(['main']);
+          this.router.navigate(['main']);
       }
       else {
         this.alert.adicionar('Usuário e Senha não encontrado');

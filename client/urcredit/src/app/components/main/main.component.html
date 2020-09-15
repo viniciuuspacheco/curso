@@ -23,7 +23,7 @@
         <i class="icones fas" (click)="toggle()" [ngClass]="{'fa-toggle-on': mostrar, 'fa-toggle-off': !mostrar}"></i>
         <span class="top-menu-direita">
             <a class="fab fa-github icones mx-3" href="https://github.com/viniciuuspacheco/curso" target="_blank"></a>
-            <i class="fas fa-sign-out-alt icones" [routerLink]="['..']"></i>
+            <i class="fas fa-sign-out-alt icones" (click)="deslogar()"></i>
         </span>
     </div>
     <div class="content" [ngClass]="{'margin': mostrar}">
