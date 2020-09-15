@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
       logarSenha: ['', Validators.required]
     });
     this.cadastrarForm = this.formBuilder.group({
+      cadastrarNome: ['', [Validators.required]],
       cadastrarEmail: ['', [Validators.required, Validators.email]],
       cadastrarSenha: ['', Validators.required]
     });
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   cadastrar() {
-    // console.log(this.api.request(this.cadastrarForm.value));
+    this.api.cadastrar(this.cadastrarForm.value);
   }
 
   recuperar() {
