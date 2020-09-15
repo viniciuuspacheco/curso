@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { AlertsService } from 'src/app/tools/alerts/alerts.service';
-import { LoadService } from 'src/app/tools/load/load.service'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,17 +13,16 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService, private load: LoadService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) {
   }
 
   ngOnInit(): void {
     this.logarForm = this.formBuilder.group({
-      logarUsuario: ['', Validators.required],
+      logarEmail: ['', Validators.email],
       logarSenha: ['', Validators.required]
     });
     this.cadastrarForm = this.formBuilder.group({
       cadastrarEmail: ['', [Validators.required, Validators.email]],
-      cadastrarUsuario: ['', Validators.required],
       cadastrarSenha: ['', Validators.required]
     });
     this.recuperarForm = this.formBuilder.group({
@@ -33,23 +31,14 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    // this.alert.adicionar('Usuário não encontrado!');
-    this.load.carregando(true);
-    setTimeout(() => {
-      this.load.carregando(false);
-      this.router.navigate(['main']);
-    }, 1000);
-    //    console.log(this.api.request(this.logarForm.value));
-
+    this.api.logar(this.logarForm.value);
   }
 
   cadastrar() {
-    // this.alert.adicionar('Cadastro realizado com sucesso!');
     // console.log(this.api.request(this.cadastrarForm.value));
   }
 
   recuperar() {
-    // this.alert.adicionar('Um e-mail foi enviado para você!');
     // console.log(this.api.request(this.recuperarForm.value));
   }
 

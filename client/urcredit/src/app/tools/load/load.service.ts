@@ -9,6 +9,5 @@ export class LoadService {
 
   carregando(valor) {
     this.mostrar = valor;
-    console.log(this.mostrar);
   }
 }
