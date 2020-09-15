@@ -1,0 +1,21 @@
+.tabela-row {
+    border: 1px solid rgba(211, 211, 211, 0.3);
+}
+
+.tabela-row:hover {
+    border: 1px solid rgba(211, 211, 211, 0.5);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.tabela-item {
+    padding: 5px;
+    align-self: center;
+}
+
+@media (max-width: 575px) {
+    .tabela-item{
+        text-align: center !important;
+    }
+}
