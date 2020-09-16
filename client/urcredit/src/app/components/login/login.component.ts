@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-
+import { AlertsService } from 'src/app/tools/alerts/alerts.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   logar() {
     this.api.logar(this.logarForm.value);
+
   }
 
   cadastrar() {
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
   }
 
   recuperar() {
-    // console.log(this.api.request(this.recuperarForm.value));
+
+    this.alert.adicionar('Senha enviada para ' + this.recuperarForm.get('recuperarEmail').value);
   }
 
   validar(formulario) {

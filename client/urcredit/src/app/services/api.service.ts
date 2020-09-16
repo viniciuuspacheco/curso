@@ -26,16 +26,20 @@ export class ApiService {
       }),
       body: JSON.stringify(object)
     }).then((response) => {
+
       this.load.carregando(false);
-      if (response.status === 200) {
-          this.router.navigate(['main']);
+      return response.json();
+
+    }).then(data => {
+
+      if (data.success) {
+        sessionStorage.setItem('token', data.data);
+        this.router.navigate(['main']);
       }
       else {
-        this.alert.adicionar('Usuário e Senha não encontrado');
+        this.alert.adicionar(data.message);
       }
-      return response.json();
-    }).then(data => {
-      sessionStorage.setItem('token', data.data);
+
     })
   }
 
@@ -56,15 +60,14 @@ export class ApiService {
       }),
       body: JSON.stringify(object)
     }).then((response) => {
+
       this.load.carregando(false);
-      if (response.status === 200) {
-        this.alert.adicionar(params.cadastrarNome + ' cadastrado com sucesso!');
-      }
-      else {
-        this.alert.adicionar('Erro ao cadastrar');
-      }
       return response.json();
+
     }).then(data => {
+
+      this.alert.adicionar(data.message);
+
     })
   }
 }
