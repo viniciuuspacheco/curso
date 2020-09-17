@@ -1,1 +1,37 @@
-<p>cadastrar works!</p>
+<div class="container" style="margin-top: 10%;">
+    <form [formGroup]="cadastrarForm">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12">
+                <div class="form-group">
+                    <label for="nome">NOME</label>
+                    <input type="text" class="form-control" formControlName="nome" id="nome">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12">
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="number" class="form-control" formControlName="cpf" id="cpf">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12">
+                <div class="form-group">
+                    <label for="divida">DÍVIDA</label>
+                    <input type="number" class="form-control" formControlName="divida" id="divida">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 col-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger btn-block" (click)="salvar()">
+                        <i class="fas fa-save"></i> SALVAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

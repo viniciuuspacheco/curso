@@ -44,7 +44,6 @@ export class ApiService {
   }
 
   cadastrar(params) {
-    console.log(params);
     this.load.carregando(true);
     var object = {
       "name": params.cadastrarNome,
@@ -68,6 +67,56 @@ export class ApiService {
 
       this.alert.adicionar(data.message);
 
+    })
+  }
+
+  cadastrarDivida(params) {
+    this.load.carregando(true);
+    var object = {
+      'name': params.nome,
+      'cpf': params.cpf,
+      'value': params.divida
+    }
+
+    fetch(this.url + 'debt', {
+      method: 'post',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+      body: JSON.stringify(object)
+    }).then((response) => {
+
+      this.load.carregando(false);
+
+      return response.json();
+
+    }).then(data => {
+      this.alert.adicionar(data.message);
+
+    })
+  }
+
+  listaDividas() {
+    this.load.carregando(true);
+
+    fetch(this.url + 'debt', {
+      method: 'get',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+    }).then((response) => {
+
+      this.load.carregando(false);
+
+      return response.json();
+
+    }).then(data => {
+
+      return JSON.stringify(data);
     })
   }
 }

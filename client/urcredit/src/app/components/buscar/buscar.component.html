@@ -1,1 +1,34 @@
-<p>buscar works!</p>
+<div class="container-fluid">
+    <div class="menu-busca">
+        <div class="input-group my-5">
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-light">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tabela">
+        <div class="row tabela-row" *ngFor="let dado of dados">
+            <div class="col-xl-5 col-lg-4 col-md-4 col-sm-8 col-12 tabela-item">
+                <strong>Nome:</strong> <br>{{dado.nome}}
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 tabela-item">
+                <strong>CPF:</strong> <br>{{dado.cpf}}
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-12 tabela-item">
+                <strong>Dívida:</strong> <br>R$ {{dado.divida}}
+            </div>
+            <div class="col-xl-1 col-lg-2 col-md-2 col-sm-4 col-12 tabela-item text-center">
+                <button type="button" class="btn btn-light m-1" (click)="editar(dado)">
+                    <i class="fas fa-pen-square"></i>
+                </button>
+                <button type="button" class="btn btn-light m-1" (click)="apagar(dado)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
