@@ -6,8 +6,8 @@ import { LoadService } from 'src/app/tools/load/load.service'
   providedIn: 'root'
 })
 export class ApiService {
-
   url = 'http://18.228.3.33/api/';
+  debitos: [];
 
   constructor(private router: Router, private alert: AlertsService, private load: LoadService) { }
 
@@ -99,6 +99,7 @@ export class ApiService {
   }
 
   listaDividas() {
+
     this.load.carregando(true);
 
     fetch(this.url + 'debt', {
@@ -115,8 +116,80 @@ export class ApiService {
       return response.json();
 
     }).then(data => {
+      this.debitos = data.data;
+    })
+  }
 
-      return JSON.stringify(data);
+  editar(params) {
+
+    this.load.carregando(true);
+    var object = {
+      'name': params.nome,
+      'cpf': params.cpf,
+      'value': params.valor
+    }
+
+    fetch(this.url + 'debt/' + params.id, {
+      method: 'put',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+      body: JSON.stringify(object)
+    }).then((response) => {
+
+      this.load.carregando(false);
+
+      return response.json();
+
+    }).then(data => {
+      this.alert.adicionar(data.message);
+    })
+  }
+
+  apagar(params) {
+
+    this.load.carregando(true);
+
+    fetch(this.url + 'debt/' + params, {
+      method: 'delete',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+    }).then((response) => {
+
+      this.load.carregando(false);
+
+      return response.json();
+
+    }).then(data => {
+      this.alert.adicionar(data.message);
+    })
+  }
+
+  buscar(params) {
+
+    this.load.carregando(true);
+
+    fetch(this.url + 'debt/' + params, {
+      method: 'get',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+    }).then((response) => {
+
+      this.load.carregando(false);
+
+      return response.json();
+
+    }).then(data => {
+      console.log(data);
+
     })
   }
 }

@@ -1,31 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-dividas',
   templateUrl: './dividas.component.html',
   styleUrls: ['./dividas.component.css']
 })
 export class DividasComponent implements OnInit {
-  dados: any;
-  constructor(private api: ApiService) { }
+  dados: [];
+  editarForm: FormGroup;
+
+  constructor(private api: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.editarForm = this.formBuilder.group({
+      nome: [''],
+      cpf: [''],
+      valor: [''],
+      id: ['']
+    });
 
-
-    this.dados = this.api.listaDividas();
-    console.log(this.dados);
-
-
-
-
+    this.api.listaDividas();
+    setInterval(() => {
+      this.dados = this.api.debitos;
+    }, 500);
 
   }
-  editar(dado) {
-    console.log(dado);
+  selecionado(dado) {
+    this.editarForm.get('nome').setValue(dado.name);
+    this.editarForm.get('cpf').setValue(dado.cpf);
+    this.editarForm.get('valor').setValue(dado.value);
+    this.editarForm.get('id').setValue(dado.id);
   }
+
+  editar() {
+    this.api.editar(this.editarForm.value);
+  }
+
   apagar(dado) {
-    console.log(dado);
-
+    this.api.apagar(dado.id)
   }
 }
