@@ -1,32 +1,59 @@
 <div class="container-fluid">
     <div class="menu-busca">
-        <div class="input-group my-5">
-            <input type="text" class="form-control">
-            <div class="input-group-append">
-                <button type="button" class="btn btn-light">
-                    <i class="fas fa-search"></i>
-                </button>
+        <form [formGroup]="buscarForm">
+            <div class="input-group my-5">
+                <input type="text" class="form-control" formControlName="cpf" placeholder="BUSCA POR CPF"
+                    (keydown.enter)="buscar()">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-light" (click)="buscar()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <div class="tabela">
         <div class="row tabela-row" *ngFor="let dado of dados">
             <div class="col-xl-5 col-lg-4 col-md-4 col-sm-8 col-12 tabela-item">
-                <strong>Nome:</strong> <br>{{dado.nome}}
+                <strong>Nome:</strong> <br>{{dado.name}}
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 tabela-item">
                 <strong>CPF:</strong> <br>{{dado.cpf}}
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-12 tabela-item">
-                <strong>Dívida:</strong> <br>R$ {{dado.divida}}
+                <strong>Dívida:</strong> <br>R$ {{dado.value}}
             </div>
             <div class="col-xl-1 col-lg-2 col-md-2 col-sm-4 col-12 tabela-item text-center">
-                <button type="button" class="btn btn-light m-1" (click)="editar(dado)">
-                    <i class="fas fa-pen-square"></i>
-                </button>
-                <button type="button" class="btn btn-light m-1" (click)="apagar(dado)">
-                    <i class="fas fa-trash"></i>
+                <div class="dropdown  dropleft">
+                    <button type="button" class="btn btn-light m-1" data-toggle="dropdown" (click)="selecionado(dado)">
+                        <i class="fas fa-pen-square"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="container">
+                            <form [formGroup]="editarForm">
+                                <div class="form-group">
+                                    <label for="">NOME</label>
+                                    <input type="text" class="form-control" formControlName="nome">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">CPF</label>
+                                    <input type="text" class="form-control" formControlName="cpf">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">VALOR</label>
+                                    <input type="text" class="form-control" formControlName="valor">
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary btn-block"
+                                        (click)="editar()">SALVAR</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-light m-1" data-toggle="dropdown" (click)="apagar(dado)">
+                    <i class=" fas fa-trash"></i>
                 </button>
             </div>
         </div>

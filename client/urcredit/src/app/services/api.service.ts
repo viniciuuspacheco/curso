@@ -8,6 +8,7 @@ import { LoadService } from 'src/app/tools/load/load.service'
 export class ApiService {
   url = 'http://18.228.3.33/api/';
   debitos: [];
+  debitosBusca: [];
 
   constructor(private router: Router, private alert: AlertsService, private load: LoadService) { }
 
@@ -171,10 +172,11 @@ export class ApiService {
   }
 
   buscar(params) {
+    console.log(params);
 
     this.load.carregando(true);
 
-    fetch(this.url + 'debt/' + params, {
+    fetch(this.url + 'debt/' + params.cpf, {
       method: 'get',
       headers: new Headers({
         'Accept': 'application/json',
@@ -182,14 +184,12 @@ export class ApiService {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token')
       }),
     }).then((response) => {
-
       this.load.carregando(false);
 
       return response.json();
 
     }).then(data => {
-      console.log(data);
-
+      this.debitosBusca = data.data;
     })
   }
 }
