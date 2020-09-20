@@ -17,22 +17,23 @@ export class BuscarComponent implements OnInit {
   ngOnInit(): void {
 
     this.buscarForm = this.formBuilder.group({
-      cpf: [''],
+      cpf: ['', Validators.required],
     });
 
     this.editarForm = this.formBuilder.group({
-      nome: [''],
-      cpf: [''],
-      valor: [''],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      valor: ['', Validators.required],
       id: ['']
     });
   }
 
 
   buscar() {
+    this.load.carregando(true);
     this.request.buscarDividas(this.buscarForm.value).subscribe(res => {
       this.dados = res.data;
-
+      this.load.carregando(false);
     });
   }
   selecionado(dado) {
@@ -54,6 +55,10 @@ export class BuscarComponent implements OnInit {
       this.alert.adicionar(res.message);
       this.buscar();
     })
+  }
+
+  validar(formulario) {
+    return formulario.status === 'VALID' ? false : true;
   }
 }
 

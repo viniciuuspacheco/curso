@@ -15,7 +15,10 @@
 }
 
 @media (max-width: 575px) {
-    .tabela-item{
+    .tabela-item {
         text-align: center !important;
     }
+}
+.btn-search {
+    border: 1px solid #ced4da;
 }

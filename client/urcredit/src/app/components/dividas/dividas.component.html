@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group">
                                     <button type="button" class="btn btn-primary btn-block"
-                                        (click)="editar()">SALVAR</button>
+                                        (click)="editar()" [disabled]="validar(editarForm)">SALVAR</button>
                                 </div>
                             </form>
                         </div>

@@ -15,9 +15,9 @@ export class CadastrarComponent implements OnInit {
 
   ngOnInit(): void {
     this.cadastrarForm = this.formBuilder.group({
-      nome: [''],
-      cpf: [''],
-      divida: [''],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      divida: ['', Validators.required],
     });
   }
   salvar() {
@@ -25,5 +25,8 @@ export class CadastrarComponent implements OnInit {
       this.alert.adicionar(res.message);
       this.router.navigate(['main/dividas']);
     })
+  }
+  validar(formulario) {
+    return formulario.status === 'VALID' ? false : true;
   }
 }

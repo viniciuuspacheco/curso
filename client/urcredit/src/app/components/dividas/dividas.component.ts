@@ -16,9 +16,9 @@ export class DividasComponent implements OnInit {
 
   ngOnInit(): void {
     this.editarForm = this.formBuilder.group({
-      nome: [''],
-      cpf: [''],
-      valor: [''],
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      valor: ['', Validators.required],
       id: ['']
     });
 
@@ -54,5 +54,8 @@ export class DividasComponent implements OnInit {
       this.alert.adicionar(res.message);
       this.listaDividas();
     })
+  }
+  validar(formulario) {
+    return formulario.status === 'VALID' ? false : true;
   }
 }

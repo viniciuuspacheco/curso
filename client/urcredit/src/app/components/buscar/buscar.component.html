@@ -2,10 +2,10 @@
     <div class="menu-busca">
         <form [formGroup]="buscarForm">
             <div class="input-group my-5">
-                <input type="text" class="form-control" formControlName="cpf" placeholder="BUSCA POR CPF"
+                <input type="number" class="form-control" formControlName="cpf" placeholder="BUSCA POR CPF"
                     (keydown.enter)="buscar()">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-light" (click)="buscar()">
+                    <button type="button" class="btn btn-light btn-search" (click)="buscar()"  [disabled]="validar(buscarForm)">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -38,21 +38,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">CPF</label>
-                                    <input type="text" class="form-control" formControlName="cpf">
+                                    <input type="number" class="form-control" formControlName="cpf">
                                 </div>
                                 <div class="form-group">
                                     <label for="">VALOR</label>
-                                    <input type="text" class="form-control" formControlName="valor">
+                                    <input type="number" class="form-control" formControlName="valor">
                                 </div>
                                 <div class="form-group">
                                     <button type="button" class="btn btn-primary btn-block"
-                                        (click)="editar()">SALVAR</button>
+                                        [disabled]="validar(editarForm)" (click)="editar()">SALVAR</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-light m-1" data-toggle="dropdown" (click)="apagar(dado)">
+                <button type="button" class="btn btn-light m-1" (click)="apagar(dado)">
                     <i class=" fas fa-trash"></i>
                 </button>
             </div>
