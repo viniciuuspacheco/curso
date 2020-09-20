@@ -31,7 +31,6 @@ export class BuscarComponent implements OnInit {
   buscar() {
     this.request.buscarDividas(this.buscarForm.value).subscribe(res => {
       this.dados = res.data;
-      console.log(res);
 
     });
   }
@@ -44,14 +43,12 @@ export class BuscarComponent implements OnInit {
 
   editar() {
     this.request.editarDividas(this.editarForm.value).subscribe(res => {
-      console.log(res);
       this.buscar();
     })
   }
 
   apagar(dado) {
     this.request.apagarDividas(dado).subscribe(res => {
-      console.log(res);
       this.buscar();
     })
   }

@@ -24,7 +24,6 @@ export class RequestService {
   constructor(private http: HttpClient, private router: Router, private alert: AlertsService, private load: LoadService) { }
 
   public login(params): Observable<any> {
-    console.log(params);
 
     var object = {
       "email": params.logarEmail,
@@ -38,11 +37,13 @@ export class RequestService {
       })
     }
     return this.http.post(this.url + 'login', JSON.stringify(object), options)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
   }
 
 
   public cadastrarUsuario(params): Observable<any> {
-    console.log(params);
 
     var object = {
       "name": params.cadastrarNome,
@@ -95,5 +96,20 @@ export class RequestService {
     return this.http.delete(this.url + 'debt/' + JSON.stringify(params.id), this.httpOptions)
 
   }
+
+
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Erro ocorreu no lado do client
+      errorMessage = error.error.message;
+    } else {
+      // Erro ocorreu no lado do servidor
+      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+    }
+
+    return throwError(errorMessage);
+  };
 }
 

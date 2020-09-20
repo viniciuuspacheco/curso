@@ -30,7 +30,6 @@ export class DividasComponent implements OnInit {
     this.load.carregando(true);
     this.request.getDividas().subscribe(res => {
       this.dados = res.data
-      console.log(res);
       this.load.carregando(false);
 
     })
@@ -44,14 +43,12 @@ export class DividasComponent implements OnInit {
 
   editar() {
     this.request.editarDividas(this.editarForm.value).subscribe(res => {
-      console.log(res);
       this.listaDividas();
     })
   }
 
   apagar(dado) {
     this.request.apagarDividas(dado).subscribe(res => {
-      console.log(res);
       this.listaDividas();
     })
   }

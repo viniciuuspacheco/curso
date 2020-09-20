@@ -20,7 +20,6 @@ export class CadastrarComponent implements OnInit {
   }
   salvar() {
     this.request.cadastrarDividas(this.cadastrarForm.value).subscribe(res => {
-      console.log(res);
     })
   }
 }
