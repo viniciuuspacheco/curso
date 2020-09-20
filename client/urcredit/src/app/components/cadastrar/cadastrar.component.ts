@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
+import { RequestService } from 'src/app/services/request.service';
+import { LoadService } from 'src/app/tools/load/load.service';
 @Component({
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
@@ -8,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CadastrarComponent implements OnInit {
   cadastrarForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private api: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService) { }
 
   ngOnInit(): void {
     this.cadastrarForm = this.formBuilder.group({
@@ -18,8 +19,8 @@ export class CadastrarComponent implements OnInit {
     });
   }
   salvar() {
-    console.log(this.cadastrarForm);
-    this.api.cadastrarDivida(this.cadastrarForm.value);
-
+    this.request.cadastrarDividas(this.cadastrarForm.value).subscribe(res => {
+      console.log(res);
+    })
   }
 }

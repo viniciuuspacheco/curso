@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { RequestService } from 'src/app/services/request.service';
 import { AlertsService } from 'src/app/tools/alerts/alerts.service';
+import { LoadService } from 'src/app/tools/load/load.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   cadastrarForm: FormGroup;
   recuperarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService, private alert: AlertsService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private alert: AlertsService, private request: RequestService, private load: LoadService) {
   }
 
   ngOnInit(): void {
@@ -32,12 +33,20 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    this.api.logar(this.logarForm.value);
+    this.request.login(this.logarForm.value).subscribe(res => {
+      console.log(res);
+      sessionStorage.setItem('token', res.data);
+      this.router.navigate(['main']);
+    })
+
 
   }
 
   cadastrar() {
-    this.api.cadastrar(this.cadastrarForm.value);
+    this.request.cadastrarUsuario(this.cadastrarForm.value).subscribe(res => {
+      console.log(res);
+
+    })
   }
 
   recuperar() {

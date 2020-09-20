@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RequestService } from 'src/app/services/request.service';
+import { LoadService } from 'src/app/tools/load/load.service';
 @Component({
   selector: 'app-dividas',
   templateUrl: './dividas.component.html',
@@ -10,7 +11,7 @@ export class DividasComponent implements OnInit {
   dados: [];
   editarForm: FormGroup;
 
-  constructor(private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService) { }
 
   ngOnInit(): void {
     this.editarForm = this.formBuilder.group({
@@ -20,11 +21,19 @@ export class DividasComponent implements OnInit {
       id: ['']
     });
 
-    this.api.listaDividas();
-    setInterval(() => {
-      this.dados = this.api.debitos;
-    }, 500);
+    this.listaDividas();
 
+
+  }
+
+  listaDividas() {
+    this.load.carregando(true);
+    this.request.getDividas().subscribe(res => {
+      this.dados = res.data
+      console.log(res);
+      this.load.carregando(false);
+
+    })
   }
   selecionado(dado) {
     this.editarForm.get('nome').setValue(dado.name);
@@ -34,10 +43,16 @@ export class DividasComponent implements OnInit {
   }
 
   editar() {
-    this.api.editar(this.editarForm.value);
+    this.request.editarDividas(this.editarForm.value).subscribe(res => {
+      console.log(res);
+      this.listaDividas();
+    })
   }
 
   apagar(dado) {
-    this.api.apagar(dado.id)
+    this.request.apagarDividas(dado).subscribe(res => {
+      console.log(res);
+      this.listaDividas();
+    })
   }
 }

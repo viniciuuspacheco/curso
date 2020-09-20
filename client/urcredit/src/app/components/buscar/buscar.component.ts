@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadService } from 'src/app/tools/load/load.service';
+import { RequestService } from 'src/app/services/request.service';
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
@@ -10,7 +11,7 @@ export class BuscarComponent implements OnInit {
   dados = [];
   buscarForm: FormGroup;
   editarForm: FormGroup;
-  constructor(private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService) { }
 
   ngOnInit(): void {
 
@@ -25,9 +26,14 @@ export class BuscarComponent implements OnInit {
       id: ['']
     });
   }
+
+
   buscar() {
-    this.api.buscar(this.buscarForm.value);
-    this.dados = this.api.debitosBusca;
+    this.request.buscarDividas(this.buscarForm.value).subscribe(res => {
+      this.dados = res.data;
+      console.log(res);
+
+    });
   }
   selecionado(dado) {
     this.editarForm.get('nome').setValue(dado.name);
@@ -37,10 +43,17 @@ export class BuscarComponent implements OnInit {
   }
 
   editar() {
-    this.api.editar(this.editarForm.value);
+    this.request.editarDividas(this.editarForm.value).subscribe(res => {
+      console.log(res);
+      this.buscar();
+    })
   }
 
   apagar(dado) {
-    this.api.apagar(dado.id)
+    this.request.apagarDividas(dado).subscribe(res => {
+      console.log(res);
+      this.buscar();
+    })
   }
 }
+

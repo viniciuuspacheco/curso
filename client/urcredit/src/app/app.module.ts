@@ -11,7 +11,8 @@ import { LoadComponent } from './tools/load/load.component';
 import { DividasComponent } from './components/dividas/dividas.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
-import { AuthGuard } from './guards/auth.guard'
+import { AuthGuard } from './guards/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthGuard } from './guards/auth.guard'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
