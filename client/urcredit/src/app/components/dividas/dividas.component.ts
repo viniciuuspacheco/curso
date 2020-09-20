@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RequestService } from 'src/app/services/request.service';
+import { AlertsService } from 'src/app/tools/alerts/alerts.service';
 import { LoadService } from 'src/app/tools/load/load.service';
 @Component({
   selector: 'app-dividas',
@@ -11,7 +12,7 @@ export class DividasComponent implements OnInit {
   dados: [];
   editarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService) { }
+  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService, private alert: AlertsService) { }
 
   ngOnInit(): void {
     this.editarForm = this.formBuilder.group({
@@ -43,12 +44,14 @@ export class DividasComponent implements OnInit {
 
   editar() {
     this.request.editarDividas(this.editarForm.value).subscribe(res => {
+      this.alert.adicionar(res.message);
       this.listaDividas();
     })
   }
 
   apagar(dado) {
     this.request.apagarDividas(dado).subscribe(res => {
+      this.alert.adicionar(res.message);
       this.listaDividas();
     })
   }

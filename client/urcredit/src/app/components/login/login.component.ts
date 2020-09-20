@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   logar() {
     this.request.login(this.logarForm.value).subscribe(res => {
       sessionStorage.setItem('token', res.data);
+      this.alert.adicionar(res.message);
       this.router.navigate(['main']);
     })
 
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
 
   cadastrar() {
     this.request.cadastrarUsuario(this.cadastrarForm.value).subscribe(res => {
+      this.alert.adicionar(res.message);
 
     })
   }

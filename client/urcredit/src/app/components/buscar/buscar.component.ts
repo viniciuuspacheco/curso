@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadService } from 'src/app/tools/load/load.service';
 import { RequestService } from 'src/app/services/request.service';
+import { AlertsService } from 'src/app/tools/alerts/alerts.service';
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
@@ -11,7 +12,7 @@ export class BuscarComponent implements OnInit {
   dados = [];
   buscarForm: FormGroup;
   editarForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService) { }
+  constructor(private formBuilder: FormBuilder, private request: RequestService, private load: LoadService, private alert: AlertsService) { }
 
   ngOnInit(): void {
 
@@ -43,12 +44,14 @@ export class BuscarComponent implements OnInit {
 
   editar() {
     this.request.editarDividas(this.editarForm.value).subscribe(res => {
+      this.alert.adicionar(res.message);
       this.buscar();
     })
   }
 
   apagar(dado) {
     this.request.apagarDividas(dado).subscribe(res => {
+      this.alert.adicionar(res.message);
       this.buscar();
     })
   }
